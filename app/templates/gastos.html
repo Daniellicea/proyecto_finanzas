@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row mb-4 align-items-center border-bottom pb-3">
+    <div class="col-md-8">
+        <span class="badge bg-danger text-white mb-2 text-uppercase tracking-wide">Pilar 2 de Widata</span>
+        <h2 style="color: var(--nu-purple);" class="fw-bold d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu me-2" style="width:36px;height:36px;" viewBox="0 0 24 24"><path d="M20.91 8.84 8.56 2.23a1.93 1.93 0 0 0-1.81 0L3.1 4.13a2.12 2.12 0 0 0-.05 3.69l12.22 6.93a2 2 0 0 0 1.94 0L21 12.5a2.12 2.12 0 0 0-.09-3.66Z"/><path d="M5.43 6.45V19a2.09 2.09 0 0 0 2.1 2.09h6.76a2 2 0 0 0 2.1-2.09v-5.91"/><line x1="10.5" y1="12" x2="10.5" y2="21"/></svg>
+            Detector de Fugas
+        </h2>
+        <p class="text-muted">Identifica pequeños hábitos de consumo y compras no planificadas que drenan tus ingresos.</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-5">
+        <div class="card-nu mb-4 shadow-sm border-0">
+            <h5 class="text-primary-nu mb-4 fw-bold d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu me-2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                Registrar Gasto Diario
+            </h5>
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    {{ form.descripcion.label(class="fw-bold small text-muted") }} 
+                    {{ form.descripcion(class="form-control bg-light") }}
+                </div>
+                <div class="row mb-3">
+                    <div class="col-6">
+                        {{ form.monto.label(class="fw-bold small text-muted") }} 
+                        {{ form.monto(class="form-control bg-light") }}
+                    </div>
+                    <div class="col-6">
+                        {{ form.categoria.label(class="fw-bold small text-muted") }} 
+                        {{ form.categoria(class="form-select bg-light") }}
+                    </div>
+                </div>
+                <div class="d-grid mt-4">
+                    {{ form.submit(class="btn btn-nu fw-bold") }}
+                </div>
+            </form>
+        </div>
+
+        <div class="card-nu shadow-sm bg-danger text-white border-0">
+            <h6 class="fw-bold text-uppercase mb-2 d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu me-2" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Fuga de Capital (Hormiga)
+            </h6>
+            <h1 class="fw-bold mb-0">${{ "{:,.2f}".format(total_hormiga) }}</h1>
+            <p class="small mt-2 mb-0 text-white-50">Este dinero está retrasando tu libertad financiera.</p>
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <div class="card-nu h-100 shadow-sm border-0">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="fw-bold text-dark mb-0 d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu me-2 text-primary-nu" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    Auditoría de Gastos Recientes
+                </h5>
+                <span class="badge bg-dark px-3 py-2 shadow-sm">Gasto Total: ${{ "{:,.2f}".format(total_general) }}</span>
+            </div>
+            
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light text-muted small text-uppercase">
+                        <tr><th>Descripción</th><th>Categoría</th><th>Monto</th><th>Fecha</th></tr>
+                    </thead>
+                    <tbody>
+                        {% for gasto in gastos %}
+                        <tr>
+                            <td class="fw-bold text-dark">{{ gasto.descripcion }}</td>
+                            <td>
+                                {% if gasto.categoria == 'Hormiga' %}
+                                    <span class="badge bg-danger rounded-pill shadow-sm">Hormiga</span>
+                                {% elif gasto.categoria == 'Fijo' %}
+                                    <span class="badge bg-primary rounded-pill shadow-sm">Fijo</span>
+                                {% else %}
+                                    <span class="badge bg-info text-dark rounded-pill shadow-sm">Variable</span>
+                                {% endif %}
+                            </td>
+                            <td class="fw-bold text-dark">${{ "{:,.2f}".format(gasto.monto) }}</td>
+                            <td class="text-muted small">{{ gasto.fecha.strftime('%d-%m-%Y') }}</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="4" class="text-center text-muted py-5">
+                                <p class="mb-0">No tienes gastos registrados. ¡Empieza a monitorear tu dinero!</p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,237 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row mb-5 justify-content-center text-center mt-4 border-bottom pb-4">
+    <div class="col-md-8">
+        <span class="badge bg-dark text-white mb-2 text-uppercase tracking-wide shadow-sm">Pilar 4 de Widata</span>
+        <h1 style="color: var(--nu-purple); font-weight: 800;" class="d-flex justify-content-center align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu me-3" style="width:40px;height:40px;" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            Academia Interactiva
+        </h1>
+        <p class="lead text-muted mt-3">Domina las reglas del juego financiero con nuestra biblioteca de contenido, análisis de mercado y respuestas a tus dudas.</p>
+    </div>
+</div>
+
+<div class="row g-4 mb-5">
+    <div class="col-12 mb-2">
+        <h4 class="fw-bold text-dark d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu me-2 text-primary-nu" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+            Videoteca Financiera
+        </h4>
+    </div>
+    <div class="col-md-4">
+        <div class="card-nu p-0 h-100 overflow-hidden shadow-sm border-0">
+            <div class="ratio ratio-16x9 bg-dark">
+                <iframe src="https://www.youtube.com/embed/ziKOpS3aKyI?rel=0" title="¿Qué es el Buró de Crédito?" allowfullscreen style="border: none;"></iframe>
+            </div>
+            <div class="p-4">
+                <h5 class="fw-bold text-dark">La Verdad del Buró</h5>
+                <p class="text-muted small mb-0 mt-2">No es una lista negra penal, es el historial de tu comportamiento de pagos.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card-nu p-0 h-100 overflow-hidden shadow-sm border-0">
+            <div class="ratio ratio-16x9 bg-dark">
+                <iframe src="https://www.youtube.com/embed/xo4v-oa7m6s?rel=0" title="Bola de Nieve vs Avalancha" allowfullscreen style="border: none;"></iframe>
+            </div>
+            <div class="p-4">
+                <h5 class="fw-bold text-dark">Ciencia contra Deudas</h5>
+                <p class="text-muted small mb-0 mt-2">Explicación matemática del motor de estrategias de Widata.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card-nu p-0 h-100 overflow-hidden shadow-sm border-0">
+            <div class="ratio ratio-16x9 bg-dark">
+                <iframe src="https://www.youtube.com/embed/UJ-2gmmzxy4?rel=0" title="¿Qué es el CAT?" allowfullscreen style="border: none;"></iframe>
+            </div>
+            <div class="p-4">
+                <h5 class="fw-bold text-dark">Desmontando el CAT</h5>
+                <p class="text-muted small mb-0 mt-2">Cómo los bancos ocultan seguros y anualidades dentro del Costo Anual Total.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="card-nu shadow-sm border-0">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h4 class="fw-bold text-dark mb-0 d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu me-2 text-primary-nu" viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                    Radar de Mercado: Análisis de Tarjetas
+                </h4>
+            </div>
+            <p class="text-muted small mb-4">La "mejor" tarjeta depende completamente de tus hábitos. Si eres "totalero" (pagas todo a fin de mes), busca tarjetas sin anualidad y con recompensas. Si tiendes a endeudarte, busca tarjetas con el CAT y la tasa de interés más bajos del mercado. Aquí tienes una muestra neutral del mercado actual en México:</p>
+            
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light text-muted small text-uppercase">
+                        <tr>
+                            <th>Institución y Tarjeta</th>
+                            <th>Tipo</th>
+                            <th>CAT Promedio (Sin IVA)</th>
+                            <th>Anualidad</th>
+                            <th>Beneficio Principal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="fw-bold text-dark">Nu (Nubank)</td>
+                            <td><span class="badge bg-info text-dark rounded-pill">Fintech</span></td>
+                            <td class="text-danger fw-bold">127.4%</td>
+                            <td class="text-success fw-bold">$0</td>
+                            <td class="small text-muted">Aceptación universal y sin comisiones ocultas. Ideal para iniciar historial.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-dark">Banorte Básica</td>
+                            <td><span class="badge bg-secondary rounded-pill">Banco Tradicional</span></td>
+                            <td class="text-danger fw-bold">103.2%</td>
+                            <td class="text-success fw-bold">$0</td>
+                            <td class="small text-muted">Exenta de cuota anual de por vida por ley. Ideal para imprevistos.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-dark">Citibanamex Simplicity</td>
+                            <td><span class="badge bg-secondary rounded-pill">Banco Tradicional</span></td>
+                            <td class="text-warning text-dark fw-bold">78.5%</td>
+                            <td class="text-success fw-bold">$0 (si la usas 1 vez al mes)</td>
+                            <td class="small text-muted">Acceso a preventas Ticketmaster sin pagar anualidad fija.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-dark">Amex Platinum Credit Card</td>
+                            <td><span class="badge bg-dark rounded-pill">Nicho / Premium</span></td>
+                            <td class="text-warning text-dark fw-bold">79.6%</td>
+                            <td class="text-danger fw-bold">$3,700 MXN</td>
+                            <td class="small text-muted">Programa Membership Rewards, Starbucks y accesos a salas VIP.</td>
+                        </tr>
+                        <tr>
+                            <td class="fw-bold text-dark">Hey Banco (Garantizada)</td>
+                            <td><span class="badge bg-info text-dark rounded-pill">Fintech / Banco</span></td>
+                            <td class="text-success fw-bold">53.4%</td>
+                            <td class="text-success fw-bold">$0</td>
+                            <td class="small text-muted">Te permite reconstruir tu Buró dejando dinero en garantía. Cashback integrado.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="mt-3 text-end">
+                <small class="text-muted">*Datos de referencia sujetos a cambios por las instituciones financieras.</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-5">
+        <div class="card-nu shadow-sm border-0 h-100 p-4">
+            <h4 class="mb-4 fw-bold text-dark d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu me-2 text-primary-nu" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                Diccionario Financiero
+            </h4>
+            
+            <div class="accordion accordion-flush" id="glosarioAccordion">
+                
+                <div class="accordion-item mb-2 border">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#c1">
+                            Fecha de Corte vs Fecha de Pago
+                        </button>
+                    </h2>
+                    <div id="c1" class="accordion-collapse collapse" data-bs-parent="#glosarioAccordion">
+                        <div class="accordion-body text-muted small">
+                            <strong>Fecha de Corte:</strong> Día del mes en que el banco hace el "cierre" de tus compras.<br><br>
+                            <strong>Fecha de Pago Límite:</strong> Último día para pagar la deuda generada hasta la fecha de corte sin que te cobren penalizaciones (usualmente 20 días después).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item mb-2 border">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#c2">
+                            Pago para No Generar Intereses (Totalero)
+                        </button>
+                    </h2>
+                    <div id="c2" class="accordion-collapse collapse" data-bs-parent="#glosarioAccordion">
+                        <div class="accordion-body text-muted small">
+                            Cantidad exacta a pagar antes de tu fecha límite para que el banco no te cobre un solo centavo de interés. Ser "Totalero" es la meta de salud financiera.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item mb-2 border">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#c3">
+                            Pago Mínimo
+                        </button>
+                    </h2>
+                    <div id="c3" class="accordion-collapse collapse" data-bs-parent="#glosarioAccordion">
+                        <div class="accordion-body text-muted small">
+                            Importe minúsculo (2% al 5% del saldo) que el banco pide para no reportarte a Buró. Si solo pagas esto, el banco te aplicará intereses altísimos sobre el saldo restante.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item mb-2 border">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#c4">
+                            Meses Sin Intereses (MSI)
+                        </button>
+                    </h2>
+                    <div id="c4" class="accordion-collapse collapse" data-bs-parent="#glosarioAccordion">
+                        <div class="accordion-body text-muted small">
+                            Esquema donde el comercio divide el costo total de un producto en mensualidades exactas. <strong>Ojo:</strong> El monto total de la compra bloquea tu límite de crédito, y se va liberando conforme pagas cada mes.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item mb-2 border">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed fw-bold text-dark" type="button" data-bs-toggle="collapse" data-bs-target="#c5">
+                            Interés Ordinario vs Moratorio
+                        </button>
+                    </h2>
+                    <div id="c5" class="accordion-collapse collapse" data-bs-parent="#glosarioAccordion">
+                        <div class="accordion-body text-muted small">
+                            <strong>Ordinario:</strong> El interés normal que te cobran si no pagas el total de tu deuda mensual.<br><br>
+                            <strong>Moratorio:</strong> Un interés de castigo, mucho más alto, que se aplica únicamente cuando ni siquiera cubres el Pago Mínimo en tu fecha límite.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-5">
+        <div class="card-nu shadow-sm border-0 h-100 p-4" style="background-color: var(--bg-color);">
+            <h4 class="mb-4 fw-bold text-dark d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu me-2 text-primary-nu" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Preguntas Frecuentes
+            </h4>
+            
+            <div class="d-flex flex-column gap-3">
+                <div class="p-3 bg-white rounded shadow-sm border-start border-primary-nu border-3">
+                    <h6 class="fw-bold mb-2">¿Si liquido mi deuda, salgo del Buró de Crédito al instante?</h6>
+                    <p class="text-muted small mb-0">No. El Buró guarda tu historial por hasta 72 meses (6 años) dependiendo del monto de la deuda. Sin embargo, al liquidarla, el estatus cambia de "Atraso" a "Cuenta al corriente", lo cual mejora tu Score mes a mes.</p>
+                </div>
+
+                <div class="p-3 bg-white rounded shadow-sm border-start border-primary-nu border-3">
+                    <h6 class="fw-bold mb-2">¿Cancelar mis tarjetas viejas mejora mi Score?</h6>
+                    <p class="text-muted small mb-0">Generalmente no. Uno de los factores positivos del Buró es la "antigüedad del crédito". Cancelar tu tarjeta más antigua puede bajar tu Score temporalmente. Es mejor mantenerla en ceros.</p>
+                </div>
+
+                <div class="p-3 bg-white rounded shadow-sm border-start border-primary-nu border-3">
+                    <h6 class="fw-bold mb-2">¿Qué pasa si pago más del Mínimo, pero menos que el pago "Para no generar intereses"?</h6>
+                    <p class="text-muted small mb-0">El banco te cobrará intereses ordinarios, pero el cálculo se hará sobre el "Saldo Promedio Diario", lo que significa que pagarás menos intereses que si solo dieras el mínimo. Aún así, perderás dinero.</p>
+                </div>
+                
+                <div class="p-3 bg-white rounded shadow-sm border-start border-primary-nu border-3">
+                    <h6 class="fw-bold mb-2">¿El algoritmo de Widata es Bola de Nieve o Avalancha?</h6>
+                    <p class="text-muted small mb-0">Widata utiliza prioritariamente el <strong>Método Avalancha</strong> porque matemáticamente es el que te ahorra más dinero en intereses al enfocarse en atacar la tarjeta con la tasa (Tasa Anual) más cara primero.</p>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

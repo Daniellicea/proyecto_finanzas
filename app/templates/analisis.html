@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row mb-4 align-items-center border-bottom pb-3">
+    <div class="col-md-8">
+        <span class="badge bg-warning text-dark mb-2 text-uppercase shadow-sm">
+            Pilar 3 de Widata
+        </span>
+
+        <h2 class="fw-bold" style="color: var(--nu-purple);">
+            Análisis de Score Crediticio
+        </h2>
+
+        <p class="text-muted">
+            Evalúa el uso de tus tarjetas (Deuda vs Límite) para predecir y mejorar tu calificación en el Buró.
+        </p>
+    </div>
+</div>
+
+
+<div class="row">
+
+    <!-- SCORE -->
+    <div class="col-md-5">
+        <div class="card shadow-sm text-center p-5 border-0 h-100">
+
+            <h5 class="text-muted text-uppercase fw-bold mb-4">
+                Score Widata Simulado
+            </h5>
+
+            {% if score == 0 %}
+                <h1 class="display-1 fw-bold text-muted">S/H</h1>
+                <p class="text-muted mt-3">
+                    Sin Historial Crediticio registrado.
+                </p>
+            {% else %}
+                {% set color_score = 'text-success' if score >= 700 else ('text-warning' if score >= 600 else 'text-danger') %}
+                <h1 class="display-1 fw-bold {{ color_score }}" style="font-size: 5rem;">
+                    {{ score }}
+                </h1>
+                <p class="text-muted mt-3 fw-bold">
+                    Rango ideal: 400 - 850
+                </p>
+            {% endif %}
+
+            <hr class="my-4">
+
+            <p class="small text-muted text-start mb-0">
+                <strong>¿Cómo calculamos esto?</strong><br>
+                El 30% de tu Score real en Buró depende de tu Índice de Utilización.
+            </p>
+
+        </div>
+    </div>
+
+
+    <!-- UTILIZACIÓN -->
+    <div class="col-md-7">
+        <div class="card shadow-sm h-100 border-0 p-4">
+
+            <h4 class="fw-bold mb-4">
+                Índice de Utilización de Crédito
+            </h4>
+
+            <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted">
+                    Crédito Usado:
+                    <strong>${{ "{:,.2f}".format(total_deuda) }}</strong>
+                </span>
+
+                <span class="text-muted">
+                    Límite Total:
+                    <strong>${{ "{:,.2f}".format(total_limite) }}</strong>
+                </span>
+            </div>
+
+            {% set progress_color = 'bg-success' if utilizacion <= 30 else ('bg-warning' if utilizacion <= 50 else 'bg-danger') %}
+
+            <div class="progress mb-4 bg-light" style="height: 25px;">
+                <div class="progress-bar {{ progress_color }}"
+                     role="progressbar"
+                     style="width: {{ utilizacion }}%;">
+                    {{ "{:,.1f}".format(utilizacion) }}%
+                </div>
+            </div>
+
+
+            <!-- DIAGNÓSTICO -->
+            <div class="alert bg-light border-0 shadow-sm p-4 mt-4">
+
+                <h5 class="fw-bold mb-3">
+                    Diagnóstico Ejecutivo:
+                </h5>
+
+                {% if utilizacion == 0 %}
+                    <p class="mb-0 text-muted">
+                        No tienes créditos registrados. Ve al Pilar 1 para agregarlos.
+                    </p>
+
+                {% elif utilizacion <= 30 %}
+                    <p class="mb-0 text-success fw-bold">
+                        ¡Excelente! Mantienes tu uso de crédito por debajo del 30%.
+                        Los bancos te consideran cliente de bajo riesgo.
+                    </p>
+
+                {% elif utilizacion <= 50 %}
+                    <p class="mb-0 text-warning fw-bold">
+                        Precaución. Estás utilizando casi la mitad de tu crédito.
+                        Intenta reducir tu deuda al 30%.
+                    </p>
+
+                {% else %}
+                    <p class="mb-0 text-danger fw-bold">
+                        ¡Alerta Roja! Estás usando más del 50% de tu crédito.
+                        Esto afecta negativamente tu Score.
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center mt-4 mb-5">
+    <div class="col-md-7">
+        <div class="card-nu p-5 shadow-lg border-0">
+            <div class="text-center mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu-lg" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+                <h2 class="text-primary-nu fw-bold">Únete a Widata</h2>
+                <p class="text-muted">Ingresa tus datos reales para un análisis preciso.</p>
+            </div>
+            
+            <form method="POST" action="" novalidate>
+                {{ form.hidden_tag() }}
+                
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        {{ form.nombre.label(class="form-label fw-bold text-muted small") }}
+                        {% if form.nombre.errors %}
+                            {{ form.nombre(class="form-control is-invalid", placeholder="Ej. Juan") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.nombre.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.nombre(class="form-control", placeholder="Ej. Juan") }}
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6 mt-3 mt-md-0">
+                        {{ form.apellidos.label(class="form-label fw-bold text-muted small") }}
+                        {% if form.apellidos.errors %}
+                            {{ form.apellidos(class="form-control is-invalid", placeholder="Ej. Pérez") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.apellidos.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.apellidos(class="form-control", placeholder="Ej. Pérez") }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        {{ form.edad.label(class="form-label fw-bold text-muted small") }}
+                        {% if form.edad.errors %}
+                            {{ form.edad(class="form-control is-invalid", type="number") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.edad.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.edad(class="form-control", type="number", placeholder="Ej. 25") }}
+                        {% endif %}
+                    </div>
+                    <div class="col-md-8 mt-3 mt-md-0">
+                        {{ form.telefono.label(class="form-label fw-bold text-muted small") }}
+                        {% if form.telefono.errors %}
+                            {{ form.telefono(class="form-control is-invalid", placeholder="10 dígitos") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.telefono.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.telefono(class="form-control", placeholder="Ej. 5512345678") }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <hr class="my-4 text-muted">
+
+                <div class="row mb-4">
+                    <div class="col-12">
+                        {{ form.email.label(class="form-label fw-bold text-muted small") }}
+                        {% if form.email.errors %}
+                            {{ form.email(class="form-control is-invalid", placeholder="correo@ejemplo.com") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.email.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.email(class="form-control", placeholder="correo@ejemplo.com") }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        {{ form.password.label(class="form-label fw-bold text-muted small") }}
+                        {% if form.password.errors %}
+                            {{ form.password(class="form-control is-invalid", placeholder="Mínimo 8 caracteres") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.password.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.password(class="form-control", placeholder="Mínimo 8 caracteres") }}
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6 mt-3 mt-md-0">
+                        {{ form.confirm_password.label(class="form-label fw-bold text-muted small") }}
+                        {% if form.confirm_password.errors %}
+                            {{ form.confirm_password(class="form-control is-invalid", placeholder="Repite tu contraseña") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.confirm_password.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.confirm_password(class="form-control", placeholder="Repite tu contraseña") }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="d-grid mt-4">
+                    {{ form.submit(class="btn btn-nu btn-lg py-3 fw-bold") }}
+                </div>
+            </form>
+            
+            <div class="text-center mt-4">
+                <p class="text-muted small">Al registrarte, aceptas que tus datos sean procesados por el algoritmo de Widata.</p>
+                <span class="text-muted">¿Ya tienes cuenta? <a href="{{ url_for('main.login') }}" class="text-primary-nu fw-bold text-decoration-none">Inicia Sesión</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

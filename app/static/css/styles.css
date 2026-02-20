@@ -1,0 +1,121 @@
+:root {
+    --nu-purple: #820AD1;
+    --nu-purple-dark: #6D08AF;
+    --bg-color: #F5F5F7;
+    --text-dark: #191919;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+}
+
+/* Navbar */
+.navbar-nu {
+    background-color: var(--nu-purple);
+}
+
+.text-primary-nu {
+    color: var(--nu-purple);
+}
+
+/* Tarjetas Principales */
+.card-nu {
+    background: white;
+    border: none;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card-nu:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+/* Botones */
+.btn-nu {
+    background-color: var(--nu-purple);
+    color: white;
+    border-radius: 20px;
+    font-weight: bold;
+    border: none;
+    padding: 10px 24px;
+    transition: background-color 0.2s;
+}
+
+.btn-nu:hover {
+    background-color: var(--nu-purple-dark);
+    color: white;
+}
+
+/* Formularios */
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 10px 15px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--nu-purple);
+    box-shadow: 0 0 0 0.25rem rgba(130, 10, 209, 0.25);
+}
+
+/* Acordeón (Glosario) */
+.accordion-button:not(.collapsed) {
+    background-color: rgba(130, 10, 209, 0.05);
+    color: var(--nu-purple);
+    box-shadow: none;
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: rgba(130, 10, 209, 0.1);
+}
+
+/* --- NUEVOS ESTILOS PARA ICONOS SVG --- */
+
+/* Clase base para todos los iconos */
+.icon-nu {
+    width: 24px;
+    height: 24px;
+    fill: none; /* Sin relleno, estilo de línea moderno */
+    stroke: currentColor; /* Toma el color del texto que lo rodea (ej. morado o blanco) */
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vertical-align: text-bottom; /* Alineación con el texto */
+    margin-right: 6px;
+}
+
+/* Iconos más grandes para títulos o tarjetas */
+.icon-nu-lg {
+    width: 48px;
+    height: 48px;
+    stroke-width: 1.5;
+    margin-bottom: 16px;
+    color: var(--nu-purple);
+}
+
+/* Iconos gigantes para secciones hero */
+.icon-nu-xl {
+    width: 80px;
+    height: 80px;
+    stroke-width: 1;
+    margin-top: 20px;
+    color: rgba(255, 255, 255, 0.8); /* Blanco translúcido para fondos oscuros */
+}
+
+/* Ajustes específicos */
+.navbar-brand .icon-nu {
+    width: 28px;
+    height: 28px;
+    vertical-align: text-top;
+}
+
+/* Para asegurar que los iconos dentro de alertas o textos rojos tomen ese color */
+.text-danger .icon-nu { stroke: #dc3545; }
+.text-warning .icon-nu { stroke: #ffc107; }
+.text-success .icon-nu { stroke: #198754; }

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-5">
+        <div class="card-nu p-4 shadow-sm">
+            <h3 class="text-center text-primary-nu mb-4 fw-bold">Bienvenido de vuelta</h3>
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <div class="mb-3">
+                    {{ form.email.label(class="form-label fw-bold") }}
+                    {{ form.email(class="form-control", placeholder="correo@ejemplo.com") }}
+                </div>
+                <div class="mb-4">
+                    {{ form.password.label(class="form-label fw-bold") }}
+                    {{ form.password(class="form-control", placeholder="Tu contraseña") }}
+                </div>
+                <div class="d-grid">
+                    {{ form.submit(class="btn btn-nu btn-lg") }}
+                </div>
+            </form>
+            <div class="text-center mt-3">
+                <small class="text-muted">¿Eres nuevo aquí? <a href="{{ url_for('main.register') }}" class="text-primary-nu fw-bold text-decoration-none">Crea una cuenta</a></small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

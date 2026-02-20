@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row align-items-center mt-5 mb-5 pb-4 border-bottom">
+    <div class="col-md-6">
+        <span class="badge bg-light text-primary-nu border mb-3 px-3 py-2 fs-6 rounded-pill d-inline-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu me-2" style="width:18px;height:18px;" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Plataforma de Análisis Financiero
+        </span>
+        <h1 style="color: var(--nu-purple); font-weight: 800; font-size: 3.5rem; line-height: 1.1;">
+            Tus datos.<br>Tu libertad financiera con Widata.
+        </h1>
+        <p class="lead text-muted mt-4">
+            Evaluamos tu situación crediticia, analizamos tus gastos y generamos planes matemáticos exactos para que elimines tus deudas y recuperes tu tranquilidad.
+        </p>
+        <div class="mt-4 d-flex gap-3">
+            <a href="{{ url_for('main.register') }}" class="btn btn-nu btn-lg px-4 shadow-sm d-flex align-items-center">
+                Comenzar mi Diagnóstico <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu ms-2" style="color:white;" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="#modulos" class="btn btn-outline-dark btn-lg px-4">Explorar Plataforma</a>
+        </div>
+    </div>
+    
+    <div class="col-md-6 text-center mt-4 mt-md-0">
+        <div class="card-nu p-5 shadow-lg position-relative overflow-hidden" style="background: linear-gradient(135deg, var(--nu-purple), var(--nu-purple-dark)); color: white; border-radius: 24px;">
+            <div class="position-relative z-index-1">
+                <h2 class="fw-bold">Inteligencia Crediticia</h2>
+                <p class="mt-3 fs-5">Deja de pagar intereses innecesarios. Descubre el poder del Método Avalancha.</p>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu-xl" viewBox="0 0 24 24"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+            </div>
+            <div class="position-absolute rounded-circle" style="width: 200px; height: 200px; background: rgba(255,255,255,0.1); top: -50px; right: -50px;"></div>
+        </div>
+    </div>
+</div>
+
+<div id="modulos" class="row text-center mb-5 mt-5">
+    <div class="col-12 mb-4">
+        <h2 class="fw-bold text-dark">Todo lo que necesitas para sanar tus finanzas</h2>
+        <p class="text-muted">Widata integra herramientas profesionales en un solo lugar.</p>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card-nu h-100 text-center shadow-sm border-0 p-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu-lg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <h5 class="fw-bold text-dark">Estrategias de Pago</h5>
+            <p class="text-muted small">Algoritmos que analizan tus tasas de interés y capacidad de pago para recomendarte qué deuda liquidar primero.</p>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card-nu h-100 text-center shadow-sm border-0 p-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu-lg" viewBox="0 0 24 24"><path d="M20.91 8.84 8.56 2.23a1.93 1.93 0 0 0-1.81 0L3.1 4.13a2.12 2.12 0 0 0-.05 3.69l12.22 6.93a2 2 0 0 0 1.94 0L21 12.5a2.12 2.12 0 0 0-.09-3.66Z"/><path d="M5.43 6.45V19a2.09 2.09 0 0 0 2.1 2.09h6.76a2 2 0 0 0 2.1-2.09v-5.91"/><line x1="10.5" y1="12" x2="10.5" y2="21"/></svg>
+            <h5 class="fw-bold text-dark">Detector de Fugas</h5>
+            <p class="text-muted small">Identifica esos pequeños hábitos de consumo y compras no planificadas que están drenando tus ingresos.</p>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card-nu h-100 text-center shadow-sm border-0 p-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu-lg" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            <h5 class="fw-bold text-dark">Análisis Crediticio</h5>
+            <p class="text-muted small">Evalúa el uso de tus tarjetas (montos, límites y frecuencias) para mejorar tu calificación en el Buró.</p>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+        <div class="card-nu h-100 text-center shadow-sm border-0 p-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon-nu-lg" viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            <h5 class="fw-bold text-dark">Academia Interactiva</h5>
+            <p class="text-muted small">Módulo informativo con videos y glosario para dominar conceptos como el CAT e interés compuesto.</p>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-5">
+    <div class="col-12">
+        <div class="card-nu p-5 text-center shadow-sm" style="background-color: rgba(130,10,209,0.05); border: 1px solid rgba(130,10,209,0.1);">
+            <h2 class="fw-bold text-primary-nu">¿Listo para cambiar tu futuro financiero?</h2>
+            <p class="lead text-muted mx-auto mt-3" style="max-width: 600px;">
+                Únete a Widata hoy mismo. Registra tu información de manera segura y recibe tu primer plan de acción.
+            </p>
+            <a href="{{ url_for('main.register') }}" class="btn btn-nu btn-lg mt-3 px-5 py-3 fs-5 shadow-sm">Crear mi cuenta gratis</a>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center text-muted small mt-5 mb-3 border-top pt-4">
+    <p>© 2026 Widata - Proyecto Integrador de Análisis Financiero Personal.</p>
+</footer>
+{% endblock %}
