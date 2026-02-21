@@ -119,3 +119,21 @@ body {
 .text-danger .icon-nu { stroke: #dc3545; }
 .text-warning .icon-nu { stroke: #ffc107; }
 .text-success .icon-nu { stroke: #198754; }
+
+
+/* --- ESTILOS MEJORADOS PARA LA BARRA DE NAVEGACIÓN --- */
+.hover-nav-item {
+    transition: all 0.3s ease;
+}
+
+.hover-nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* Blanco translúcido */
+    transform: translateY(-2px);
+}
+
+.dropdown-menu-nu {
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
