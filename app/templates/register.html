@@ -9,7 +9,7 @@
                 <p class="text-muted">Ingresa tus datos reales para un análisis preciso.</p>
             </div>
             
-            <form method="POST" action="" novalidate>
+            <form method="POST" action="" enctype="multipart/form-data" novalidate>
                 {{ form.hidden_tag() }}
                 
                 <div class="row mb-3">
@@ -17,9 +17,7 @@
                         {{ form.nombre.label(class="form-label fw-bold text-muted small") }}
                         {% if form.nombre.errors %}
                             {{ form.nombre(class="form-control is-invalid", placeholder="Ej. Juan") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.nombre.errors %}{{ error }}{% endfor %}
-                            </div>
+                            <div class="invalid-feedback">{% for error in form.nombre.errors %}{{ error }}{% endfor %}</div>
                         {% else %}
                             {{ form.nombre(class="form-control", placeholder="Ej. Juan") }}
                         {% endif %}
@@ -28,9 +26,7 @@
                         {{ form.apellidos.label(class="form-label fw-bold text-muted small") }}
                         {% if form.apellidos.errors %}
                             {{ form.apellidos(class="form-control is-invalid", placeholder="Ej. Pérez") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.apellidos.errors %}{{ error }}{% endfor %}
-                            </div>
+                            <div class="invalid-feedback">{% for error in form.apellidos.errors %}{{ error }}{% endfor %}</div>
                         {% else %}
                             {{ form.apellidos(class="form-control", placeholder="Ej. Pérez") }}
                         {% endif %}
@@ -42,9 +38,7 @@
                         {{ form.edad.label(class="form-label fw-bold text-muted small") }}
                         {% if form.edad.errors %}
                             {{ form.edad(class="form-control is-invalid", type="number") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.edad.errors %}{{ error }}{% endfor %}
-                            </div>
+                            <div class="invalid-feedback">{% for error in form.edad.errors %}{{ error }}{% endfor %}</div>
                         {% else %}
                             {{ form.edad(class="form-control", type="number", placeholder="Ej. 25") }}
                         {% endif %}
@@ -53,9 +47,7 @@
                         {{ form.telefono.label(class="form-label fw-bold text-muted small") }}
                         {% if form.telefono.errors %}
                             {{ form.telefono(class="form-control is-invalid", placeholder="10 dígitos") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.telefono.errors %}{{ error }}{% endfor %}
-                            </div>
+                            <div class="invalid-feedback">{% for error in form.telefono.errors %}{{ error }}{% endfor %}</div>
                         {% else %}
                             {{ form.telefono(class="form-control", placeholder="Ej. 5512345678") }}
                         {% endif %}
@@ -69,9 +61,7 @@
                         {{ form.email.label(class="form-label fw-bold text-muted small") }}
                         {% if form.email.errors %}
                             {{ form.email(class="form-control is-invalid", placeholder="correo@ejemplo.com") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.email.errors %}{{ error }}{% endfor %}
-                            </div>
+                            <div class="invalid-feedback">{% for error in form.email.errors %}{{ error }}{% endfor %}</div>
                         {% else %}
                             {{ form.email(class="form-control", placeholder="correo@ejemplo.com") }}
                         {% endif %}
@@ -83,9 +73,7 @@
                         {{ form.password.label(class="form-label fw-bold text-muted small") }}
                         {% if form.password.errors %}
                             {{ form.password(class="form-control is-invalid", placeholder="Mínimo 8 caracteres") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.password.errors %}{{ error }}{% endfor %}
-                            </div>
+                            <div class="invalid-feedback">{% for error in form.password.errors %}{{ error }}{% endfor %}</div>
                         {% else %}
                             {{ form.password(class="form-control", placeholder="Mínimo 8 caracteres") }}
                         {% endif %}
@@ -94,13 +82,16 @@
                         {{ form.confirm_password.label(class="form-label fw-bold text-muted small") }}
                         {% if form.confirm_password.errors %}
                             {{ form.confirm_password(class="form-control is-invalid", placeholder="Repite tu contraseña") }}
-                            <div class="invalid-feedback">
-                                {% for error in form.confirm_password.errors %}{{ error }}{% endfor %}
-                            </div>
+                            <div class="invalid-feedback">{% for error in form.confirm_password.errors %}{{ error }}{% endfor %}</div>
                         {% else %}
                             {{ form.confirm_password(class="form-control", placeholder="Repite tu contraseña") }}
                         {% endif %}
                     </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="face_file" class="form-label fw-bold text-muted small">Sube tu foto de perfil</label>
+                    <input type="file" name="face_file" id="face_file" class="form-control" accept="image/*" required>
                 </div>
 
                 <div class="d-grid mt-4">

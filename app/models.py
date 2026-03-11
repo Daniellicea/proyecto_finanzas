@@ -17,18 +17,21 @@ class Banco(db.Model):
     deudas = db.relationship('Deuda', backref='institucion', lazy=True)
 
 class User(db.Model, UserMixin):
-    __tablename__ = 'user'
+    __tablename__ = 'usuarios'
+
     id = db.Column(db.Integer, primary_key=True)
-    # Ya no hay username, ahora usamos nombre y apellidos
-    nombre = db.Column(db.String(50), nullable=False)
+    nombre = db.Column(db.String(100), nullable=False)
     apellidos = db.Column(db.String(100), nullable=False)
     edad = db.Column(db.Integer, nullable=False)
-    telefono = db.Column(db.String(10), nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(60), nullable=False)
-    ingreso_mensual = db.Column(db.Float, default=0.0)
-    gastos_fijos = db.Column(db.Float, default=0.0)
-    estrategia_preferida = db.Column(db.String(20), default='avalancha')
+    telefono = db.Column(db.String(20))
+    email = db.Column(db.String(150), unique=True, nullable=False)
+
+    # Coincide con tu base de datos
+    password_hash = db.Column(db.String(255), nullable=False)
+
+    # Face ID
+    face_encoding = db.Column(db.Text, nullable=True)
+
     deudas = db.relationship('Deuda', backref='author', lazy=True)
     gastos = db.relationship('Gasto', backref='author', lazy=True)
 
@@ -40,7 +43,7 @@ class Deuda(db.Model):
     tasa = db.Column(db.Float, nullable=False)
     minimo = db.Column(db.Float, nullable=False)
     banco_id = db.Column(db.Integer, db.ForeignKey('bancos.id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
 
 class Gasto(db.Model):
     __tablename__ = 'gasto'
@@ -49,4 +52,4 @@ class Gasto(db.Model):
     monto = db.Column(db.Float, nullable=False)
     categoria = db.Column(db.String(50), nullable=False)
     fecha = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('usuarios.id'), nullable=False)
