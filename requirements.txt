@@ -1,0 +1,11 @@
+flask
+flask-sqlalchemy
+flask-bcrypt
+flask-login
+flask-wtf
+pymysql
+flask-jwt-extended
+flask-cors
+face_recognition
+opencv-python-headless
+numpy
