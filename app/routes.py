@@ -507,25 +507,48 @@ def api_get_creditos(user_id):
 @main.route('/creditos', methods=['POST'])
 @jwt_required()
 def api_post_creditos():
-    data = request.get_json()
+    data = request.get_json() or {}
     user_id = data.get('usuario_id')
     
     current_user = get_jwt_identity()
-    if str(current_user) != str(user_id):
+    if user_id is None:
+        user_id = current_user
+    elif str(current_user) != str(user_id):
         return jsonify({"msg": "No autorizado"}), 403
         
-    nuevo = Deuda(
-        monto=float(data.get('deuda_actual', 0)),
-        limite=float(data.get('limite_credito', 0)),
-        tasa=float(data.get('tasa_anual', 15.0)),
-        minimo=float(data.get('pago_minimo', 0)),
-        banco_id=int(data.get('institucion_id', 1)),
-        user_id=user_id
-    )
-    db.session.add(nuevo)
-    db.session.commit()
-    
-    return jsonify({"msg": "Crédito agregado", "id": nuevo.id}), 201
+    try:
+        banco_id = int(data.get('institucion_id', 1))
+        # Asegurar que la institución bancaria existe en la BD
+        banco = Banco.query.get(banco_id)
+        if not banco:
+            banco = Banco.query.first()
+            if not banco:
+                banco = Banco(
+                    id=1,
+                    nombre="BBVA México",
+                    pais_origen="México",
+                    emite_tarjeta_credito=True,
+                    otorga_prestamos=True,
+                    tipo_institucion="Banco"
+                )
+                db.session.add(banco)
+                db.session.commit()
+            banco_id = banco.id
+
+        nuevo = Deuda(
+            monto=float(data.get('deuda_actual', 0)),
+            limite=float(data.get('limite_credito', 0)),
+            tasa=float(data.get('tasa_anual', 15.0)),
+            minimo=float(data.get('pago_minimo', 0)),
+            banco_id=banco_id,
+            user_id=int(user_id)
+        )
+        db.session.add(nuevo)
+        db.session.commit()
+        return jsonify({"msg": "Crédito agregado exitosamente", "id": nuevo.id}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"msg": f"Error al guardar crédito: {str(e)}"}), 500
 
 @main.route('/api/creditos/<int:credito_id>', methods=['DELETE'])
 @main.route('/creditos/<int:credito_id>', methods=['DELETE'])
@@ -574,6 +597,22 @@ def api_update_credito(credito_id):
 @main.route('/instituciones', methods=['GET'])
 def api_get_instituciones():
     bancos = Banco.query.all()
+    if not bancos:
+        bancos = [
+            Banco(id=1, nombre='BBVA México', pais_origen='México', emite_tarjeta_credito=True, otorga_prestamos=True, tipo_institucion='Banco'),
+            Banco(id=2, nombre='Nu México', pais_origen='México', emite_tarjeta_credito=True, otorga_prestamos=True, tipo_institucion='Sofipo'),
+            Banco(id=3, nombre='Santander', pais_origen='México', emite_tarjeta_credito=True, otorga_prestamos=True, tipo_institucion='Banco'),
+            Banco(id=4, nombre='Citibanamex', pais_origen='México', emite_tarjeta_credito=True, otorga_prestamos=True, tipo_institucion='Banco'),
+            Banco(id=5, nombre='Banorte', pais_origen='México', emite_tarjeta_credito=True, otorga_prestamos=True, tipo_institucion='Banco'),
+            Banco(id=6, nombre='Mercado Pago', pais_origen='México', emite_tarjeta_credito=True, otorga_prestamos=True, tipo_institucion='Fintech'),
+            Banco(id=7, nombre='Hey Banco', pais_origen='México', emite_tarjeta_credito=True, otorga_prestamos=True, tipo_institucion='Banco Digital')
+        ]
+        try:
+            db.session.add_all(bancos)
+            db.session.commit()
+            bancos = Banco.query.all()
+        except Exception:
+            db.session.rollback()
     return jsonify({
         "instituciones": [{
             "id": b.id,
